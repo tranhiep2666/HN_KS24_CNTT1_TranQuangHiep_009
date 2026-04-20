@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 600px;
+            margin: 0 auto;
+            border: black;
+        }
+        button{
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+            background-color: forestgreen;
+        }
+    </style>
+
+</head>
+<body>
+
+<form th:action="@{/games/save}" th:object="${game}" method="post">
+
+
+    Game Form
+    <input type="hidden" th:field="*{id}" />
+    <hr>
+
+    Title:
+    <input th:field="*{title}" />
+    <p th:errors="*{title}"></p>
+
+    Genre:
+    <input th:field="*{genre}" />
+    <p th:errors="*{genre}"></p>
+
+    Quantity:
+    <input th:field="*{quantity}" type="number"/>
+    <p th:errors="*{quantity}"></p>
+
+    Image:
+    <input th:field="*{coverImage}" />
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
